@@ -9,6 +9,14 @@ from GenerateXML import *
 import threading
 import os
 
+def resource_path(relative_path):
+    try:        
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 def thread(fn):
     def execute(*args, **kwargs):
         threading.Thread(target=fn, args=args, kwargs=kwargs).start()
