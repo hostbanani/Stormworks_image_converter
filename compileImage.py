@@ -4,7 +4,7 @@ import textwrap
 
 class ImageConverter():
     def __init__(self, path): ##Image initialization (accepts the path to the image)
-        self.Image_file = Image.open(path)
+        self.Image_file = Image.open(path).convert('RGBA')
         self.path = path
     
     def _ReSize(self, new_size): ## Mandatory resize with the original class does not work
@@ -58,7 +58,7 @@ class ImageConverter():
                 color = self.Image_Map[column, line]
                 column += 1
                 color_list = [color]
-                if True:
+                if color[3] >= 150:
                     while column < columns and This_Line_len < 35 and self._Comparison(self.Image_Map[column, line], color) < (sensitivity)*10:
                         color_list.append(self.Image_Map[column, line])
                         column += 1
@@ -68,6 +68,11 @@ class ImageConverter():
                         buf += char[This_Line_len] + char[math.floor(colorx[0]/8)] + char[math.floor(colorx[1]/8)] + char[math.floor(colorx[2]/8)]
                     else:
                         buf += char[This_Line_len] + "-" + char[math.floor(colorx[2]/8)]
+                else:
+                    while column < columns and This_Line_len < 35 and (self.Image_Map[column,line][3] < 150):
+                        column += 1
+                        This_Line_len += 1
+                    buf += char[This_Line_len] + "_"
             self.Image_Code += buf
             buf = "" 
     
