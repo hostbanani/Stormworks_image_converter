@@ -9,15 +9,6 @@ class LoadingWindow:
         self.loading_window.geometry("300x100")
         self.loading_window.resizable(False, False)
         
-        ## Try to find the icon
-        try:
-            self.iconbitmap('icon.ico')
-        except Exception:
-            pass
-        try:
-            self.iconbitmap(resource_path('icon.ico'))
-        except Exception:
-            pass
         
         ## Add label
         self.label = Label(self.loading_window, text="Loading, please wait...")
