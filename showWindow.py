@@ -7,15 +7,6 @@ class Show(Toplevel):
         self.title("Image")
         load.set_progress(0)
         
-        # Try to find the icon
-        try:
-            self.iconbitmap('icon.ico')
-        except Exception:
-            pass
-        try:
-            self.iconbitmap(resource_path('icon.ico'))
-        except Exception:
-            pass
             
         if size[1] > 96:
             self.geometry(str(size[0]*2+30) + "x" + str(size[1]*2+20) + "+300+300")
