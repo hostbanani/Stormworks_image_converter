@@ -4,7 +4,7 @@ import textwrap
 
 class ImageConverter():
     def __init__(self, path): ##Image initialization (accepts the path to the image)
-        self.Image_file = Image.open(path).convert('RGBA')
+        self.Image_file = Image.open(path)
         self.path = path
     
     def _ReSize(self, new_size): ## Mandatory resize with the original class does not work
