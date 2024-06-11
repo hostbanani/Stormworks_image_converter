@@ -59,7 +59,7 @@ class ImageConverter():
                 column += 1
                 color_list = [color]
                 if color[3] >= 150:
-                    while column < columns and This_Line_len < 35 and self._Comparison(self.Image_Map[column, line], color) < (sensitivity)*10:
+                    while column < columns and This_Line_len < 35 and self._Comparison(self.Image_Map[column, line], color) < (sensitivity)*10 and self.Image_Map[column, line][3] > 150:
                         color_list.append(self.Image_Map[column, line])
                         column += 1
                         This_Line_len += 1
